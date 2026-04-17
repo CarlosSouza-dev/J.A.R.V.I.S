@@ -8,7 +8,7 @@ while True:
         print(f"Você disse: {comando}")
 
         if "sair" in comando or "desligar" in comando:
-            falar("Desligando Sistemas. Até logo, senhor.")
+            falar("Desligando Sistemas, Até logo, senhor.")
             break
         elif "quem é você" in comando:
             falar("Eu sou Jarvis, a Inteligência Suprema.")
