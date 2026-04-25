@@ -1,20 +1,37 @@
-from habilidades import falar, ouvir
-from datetime import datetime
+from habilidades import falar, ouvir, navegador, spotify, pensar, instagram
 
-falar("Sistemas Iniciados. Como posso ajudar, senhor?")
+CHAVE_ATIVACAO = ["jarvis", "jarafus", "garvest", "járvis", "jar", "chaves"]
+falar(f"Sistemas em Standby, diga 'Jarvis' para a ativação.")
+
 while True:
-    comando = ouvir()
-    if comando:
-        print(f"Você disse: {comando}")
+    trigger = ouvir()
+    if any(palavra in trigger for palavra in CHAVE_ATIVACAO):
+        falar("Como posso ajudar, senhor?")
 
-        if "sair" in comando or "desligar" in comando:
-            falar("Desligando Sistemas, Até logo, senhor.")
-            break
-        elif "quem é você" in comando:
-            falar("Eu sou Jarvis, a Inteligência Suprema.")
+        while True:
+            comando_def = ouvir()
+                
+            if not comando_def:
+                falar("Sistemas em Standby, chame se precisar, senhor.")
+                break
 
-        elif "que horas são" in comando:
-            agora = datetime.now().strftime('%H:%M')
-            falar(f"Agora são {agora}")
-        else:
-            falar("Comando Desconhecido")
+            if "descansar" in comando_def or "standby" in comando_def:
+                falar("Sistemas em Standby, chame se precisar, senhor.")
+                break
+            
+            if "sair" in comando_def or "desligar" in comando_def:
+                falar("Desligando Sistemas, Até logo, senhor.")
+                exit()
+
+            elif "navegador" in comando_def:
+                navegador()
+            
+            elif "spotify" in comando_def:
+                spotify()
+            
+            elif "instagram" in comando_def:
+                instagram()
+            
+            resp_jarvis = pensar(comando_def)
+            falar(resp_jarvis)
+            
