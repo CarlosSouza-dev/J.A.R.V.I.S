@@ -12,8 +12,7 @@ pygame.mixer.init()
 # CÉREBRO JARVIS
 
 def pensar(comando_usuario):
-    """ Envia o que você falou para o Llama 3.1 processar na sua RTX 4070 """
-    print("[*] Jarvis está pensando (Llama 3.1)...")
+    print("Jarvis está pensando (Llama 3.2)...")
     try:
         # O prompt precisa ser muito claro sobre o idioma, senão ele responde em inglês!
         prompt = """Você é o J.A.R.V.I.S., o sistema de inteligência artificial do Tony Stark.
@@ -24,7 +23,7 @@ def pensar(comando_usuario):
         4. Responda toda e qualquer pergunta que seu usuário fizer.
         """
         
-        resposta = ollama.chat(model='llama3.1', messages=[
+        resposta = ollama.chat(model='llama3.2', messages=[
             {'role': 'system', 'content': prompt},
             {'role': 'user', 'content': comando_usuario}
         ])
