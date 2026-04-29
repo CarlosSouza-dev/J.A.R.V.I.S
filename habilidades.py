@@ -5,9 +5,10 @@ import pygame
 import time
 import pyautogui
 import ollama
+import tinytuya
 
 pygame.mixer.init()
-
+pyautogui.PAUSE = 0.5
 #--------------------------------------------------------------------------
 # CÉREBRO JARVIS
 
@@ -113,3 +114,37 @@ def instagram():
     pyautogui.press("win")
     pyautogui.write("instagram")
     pyautogui.press("enter")
+
+def vscode():
+    pyautogui.press("win")
+    pyautogui.write("vscode")
+    pyautogui.press("enter")
+
+def whatsapp():
+    pyautogui.press("win")
+    pyautogui.write("whatsapp")
+    pyautogui.press("enter")
+
+DEVICE_ID = "eb16e42090b6b2f9ecb1fc"
+DEVICE_IP = "177.74.199.99"
+LOCAL_KEY = "fzU>8J0h>24eG/{e"
+
+def controlar_luz(comando):
+    try:
+        luz = tinytuya.OutletDevice(DEVICE_ID, DEVICE_IP, LOCAL_KEY)
+        luz.set_version(3.3)
+
+        if "ligar" in comando or "acender" in comando:
+            luz.turn_on()
+            return "Luzes ligadas, senhor."
+        
+        elif "apagar" in comando or "desligar" in comando:
+            luz.turn_off()
+            return "Luzes apagadas, senhor."
+        
+        else:
+            return "Desculpe ,devo apagar ou ligar as luzes?"
+    
+    except Exception as e:
+        print(f"[ERRO EKAZA]: {e}")
+        return "Senhor, perdi a conexão com a rede elétrica do quarto."
