@@ -1,4 +1,6 @@
-from habilidades import falar, ouvir, navegador, spotify, pensar, instagram, vscode, whatsapp, controlar_luz
+from habilidades import falar, ouvir, navegador, spotify, pensar, instagram, vscode, whatsapp ,desligar, whiteboard
+
+import memoria 
 
 CHAVE_ATIVACAO = ["jarvis", "jarafus", "garvest", "járvis", "jar", "chaves"]
 falar(f"Sistemas em Standby, diga 'Jarvis' para a ativação.")
@@ -14,6 +16,17 @@ while True:
             if not comando_def:
                 falar("Sistemas em Standby, chame se precisar, senhor.")
                 break
+            
+            elif "anote" in comando_def or "salve no bloco" in comando_def:
+                falar("Qual deve ser o título da nota, senhor?")
+                titulo_nota = ouvir()
+
+                if titulo_nota:
+                    prompt_resumo = f"Resuma os pontos principais da nossa última explicação sobre {titulo_nota} em formato de lista (markdown)."
+                    conteudo_para_salvar = pensar(prompt_resumo)
+                    
+                    status = memoria.salvar_nota(titulo_nota, conteudo_para_salvar)
+                    falar(status)
 
             elif "descansar" in comando_def or "standby" in comando_def:
                 falar("Sistemas em Standby, chame se precisar, senhor.")
@@ -32,7 +45,7 @@ while True:
             elif "instagram" in comando_def:
                 instagram()
             
-            elif "vscode" in comando_def:
+            elif "editor" in comando_def:
                 vscode()
             
             elif "whatsapp" in comando_def:
@@ -40,20 +53,20 @@ while True:
             
             elif "delta" in comando_def:
                 falar("executando protocolo Delta, bons estudos, senhor.")
-                navegador()
+                whiteboard()
                 spotify()
+                navegador()
                 whatsapp()
             
-            elif "delta dois" in comando_def or "delta 2" in comando_def:
-                falar("executando protocolo Delta 2, bons estudos, senhor.")
+            elif "ômega" in comando_def:
+                falar("executando protocolo ômega, bons estudos, senhor.")
                 navegador()
                 spotify()
                 whatsapp()
                 vscode()
             
-            elif "luz" in comando_def or "luzes" in comando_def:
-                resposta = controlar_luz(comando_def)
-                falar(resposta)
+            elif "boa noite" in comando_def:
+                desligar()
             
             else:
                 resp_jarvis = pensar(comando_def)
