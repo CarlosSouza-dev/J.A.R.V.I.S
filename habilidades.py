@@ -146,14 +146,15 @@ def whatsapp():
     pyautogui.write("whatsapp")
     pyautogui.press("enter")
 
+def netflix():
+    pyautogui.press("win")
+    pyautogui.write("netflix")
+    pyautogui.press("enter")
+
 def whiteboard():
     pyautogui.press("win")
     pyautogui.write("whiteboard")
     pyautogui.press("enter")
-
-DEVICE_ID = "eb16e42090b6b2f9ecb1fc"
-DEVICE_IP = "177.74.199.99"
-LOCAL_KEY = "fzU>8J0h>24eG/{e"
     
 def desligar():
     falar("desligando tudo, chefia.")
