@@ -1,4 +1,4 @@
-import speech_recognition as sr
+import speech_recognition as sr  
 import torch
 from TTS.api import TTS
 import pygame
@@ -9,7 +9,7 @@ import tinytuya
 import os
 
 pygame.mixer.init()
-pyautogui.PAUSE = 0.5
+pyautogui.PAUSE = 1.0
 #--------------------------------------------------------------------------
 # CÉREBRO JARVIS
 
@@ -125,6 +125,8 @@ def navegador():
     pyautogui.press("win")
     pyautogui.write("chrome")
     pyautogui.press("enter")
+    pyautogui.hotkey("win", "up")
+
 
 def spotify():
     pyautogui.press("win")
@@ -140,11 +142,14 @@ def vscode():
     pyautogui.press("win")
     pyautogui.write("vscode")
     pyautogui.press("enter")
+    pyautogui.hotkey("win", "up")
 
 def whatsapp():
     pyautogui.press("win")
     pyautogui.write("whatsapp")
     pyautogui.press("enter")
+    time.sleep(3)
+    pyautogui.hotkey("win", "up")
 
 def netflix():
     pyautogui.press("win")
@@ -155,7 +160,32 @@ def whiteboard():
     pyautogui.press("win")
     pyautogui.write("whiteboard")
     pyautogui.press("enter")
+    pyautogui.hotkey("win", "up")
     
 def desligar():
     falar("desligando tudo, chefia.")
     os.system("shutdown /s /t 0")
+
+DEVICE_ID = "eb16e42090b6b2f9ecb1fc"
+DEVICE_IP = "177.74.199.99"
+LOCAL_KEY = "fzU>8J0h>24eG/{e"
+
+def controlar_luz(comando):
+    try:
+        luz = tinytuya.OutletDevice(DEVICE_ID, DEVICE_IP, LOCAL_KEY)
+        luz.set_version(3.3)
+
+        if "ligar" in comando or "acender" in comando:
+            luz.turn_on()
+            return "Luzes ligadas, senhor."
+        
+        elif "apagar" in comando or "desligar" in comando:
+            luz.turn_off()
+            return "Luzes apagadas, senhor."
+        
+        else:
+            return "Desculpe ,devo apagar ou ligar as luzes?"
+    
+    except Exception as e:
+        print(f"[ERRO EKAZA]: {e}")
+        return "Senhor, perdi a conexão com a rede elétrica do quarto."
