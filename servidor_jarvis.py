@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import ollama
-# import sistema  # Descomente caso suas funções da Ekaza estejam no arquivo sistema.py
 
 app = Flask(__name__)
 CORS(app) # Libera o acesso do tablet
