@@ -1,6 +1,6 @@
 # J.A.R.V.I.S. Core 🧠⚡
 
-Um assistente virtual local de altíssimo desempenho, construído em Python. Projetado para rodar 100% offline garantindo privacidade absoluta e baixa latência. Integrado com hardware IoT, memória de longo prazo (Obsidian) e automação de sistema operacional.
+Um assistente virtual local de altíssimo desempenho, construído em Python. Projetado para rodar 100% offline garantindo privacidade absoluta e baixa latência. Integrado com hardware IoT (EM DESENVOLVIMENTO: 'servidor_jarvis.py'), memória de longo prazo (Obsidian) e automação de sistema operacional.
 
 ## 🚀 Recursos Principais
 
