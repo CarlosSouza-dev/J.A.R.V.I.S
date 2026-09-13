@@ -1,6 +1,6 @@
 import customtkinter as ctk
 import threading
-from habilidades import falar, ouvir, navegador, spotify, pensar, instagram, vscode, whatsapp, desligar, whiteboard, netflix
+from habilidades import falar, ouvir, navegador, spotify, pensar, instagram, vscode, whatsapp, desligar, whiteboard, netflix, controlar_luz
 import memoria 
 
 # Configuração visual do aplicativo
@@ -58,7 +58,7 @@ class JarvisApp(ctk.CTk):
             self.jarvis_ativo = False
             self.atualizar_tela("STANDBY", "#1f538d", "Sistemas em repouso.") # Azul
 
-    # --- O SEU CÉREBRO PERSONALIZADO ---
+    # --- CÉREBRO ---
     def loop_cerebro(self):
         # Substitui o trigger antigo. Ao clicar, ele já se apresenta.
         falar("Como posso ajudar, senhor?")
@@ -132,6 +132,14 @@ class JarvisApp(ctk.CTk):
             elif "whatsapp" in comando_def:
                 self.after(0, self.atualizar_tela, "EXECUTANDO", "#25d366", "Abrindo WhatsApp...")
                 whatsapp()
+
+            elif "luz" in comando_def or "luzes" in comando_def:
+                self.after(0, self.atualizar_tela, "EXECUTANDO", "#f1c40f", "Acessando Ekaza...")
+                resposta_luz = controlar_luz(comando_def)
+                
+                if self.jarvis_ativo:
+                    self.after(0, self.atualizar_tela, "FALANDO...", "#28a745", "Simulação de voz ativa.")
+                    falar(resposta_luz)
             
             # 6. Protocolos Multi-Tarefas
             elif "delta" in comando_def:
@@ -142,9 +150,9 @@ class JarvisApp(ctk.CTk):
                 navegador()
                 whatsapp()
             
-            elif "ômega" in comando_def:
-                self.after(0, self.atualizar_tela, "EXECUTANDO", "#8a2be2", "Protocolo Ômega Ativo")
-                falar("Executando protocolo ômega. Bons estudos, senhor.")
+            elif "alfa" in comando_def:
+                self.after(0, self.atualizar_tela, "EXECUTANDO", "#8a2be2", "Protocolo Alfa Ativo")
+                falar("Executando protocolo Alfa. Bons estudos, senhor.")
                 navegador()
                 spotify()
                 whatsapp()

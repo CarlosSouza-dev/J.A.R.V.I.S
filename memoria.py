@@ -1,7 +1,10 @@
 import os
 from datetime import datetime
+from dotenv import load_dotenv
 
-CAMINHO_VAULT = r"C:\Users\carlo\Documents\Obsidian Vault"
+load_dotenv()
+
+CAMINHO_VAULT = os.getenv("CAMINHO_VAULT")
 
 def salvar_nota(titulo, content, pasta="Jarvis"):
     caminho_pasta = os.path.join(CAMINHO_VAULT, pasta)

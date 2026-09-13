@@ -8,6 +8,9 @@ import ollama
 import tinytuya
 import os
 
+from dotenv import load_dotenv
+load_dotenv()
+
 pygame.mixer.init()
 pyautogui.PAUSE = 1.0
 #--------------------------------------------------------------------------
@@ -166,9 +169,9 @@ def desligar():
     falar("desligando tudo, chefia.")
     os.system("shutdown /s /t 0")
 
-DEVICE_ID = "eb16e42090b6b2f9ecb1fc"
-DEVICE_IP = "177.74.199.99"
-LOCAL_KEY = "fzU>8J0h>24eG/{e"
+DEVICE_ID = os.getenv("EKAZA_ID")
+DEVICE_IP = os.getenv("EKAZA_IP")
+LOCAL_KEY = os.getenv("EKAZA_KEY")
 
 def controlar_luz(comando):
     try:

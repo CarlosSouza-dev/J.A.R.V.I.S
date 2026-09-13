@@ -1,0 +1,13 @@
+# Segredos e Senhas
+.env
+
+# Ambientes Virtuais
+.venv/
+env/
+
+# Arquivos temporários do Python
+__pycache__/
+*.pyc
+
+# Áudios gerados pelo Jarvis
+*.wav
